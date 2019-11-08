@@ -8,6 +8,6 @@ public class EventController {
 	
 	@RequestMapping("/hello")
 	public String sayHi() {
-		return "Hello";
+		return "Welcome to Evento";
 	}
 }
