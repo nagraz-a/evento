@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EventController {
 	
-	@RequestMapping("/hello")
+	@RequestMapping("/hello.....")
 	public String sayHi() {
 		return "Welcome to Evento";
 	}
