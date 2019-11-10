@@ -26,7 +26,6 @@ public class UserController {
 		return "User Saved Sucessfully........";
 		
 	}
-	
 	@GetMapping("getUser/{email}")
 	public List<User> getUserbyEmail(@PathVariable String email){
 		return repository.findByEmail(email);

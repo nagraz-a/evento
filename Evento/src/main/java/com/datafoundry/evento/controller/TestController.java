@@ -1,5 +1,6 @@
 package com.datafoundry.evento.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.datafoundry.evento.repository.TestRepository;
 @RestController
 @RequestMapping("/test")
 public class TestController {
+	@Autowired
 	private TestRepository repository;
 	@RequestMapping("/hello")
 	public String sayHello()
