@@ -9,7 +9,7 @@ import com.datafoundry.evento.model.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
-	List<User> findByEmail(String email);
+	User findByEmail(String email);
 	
 
 }
