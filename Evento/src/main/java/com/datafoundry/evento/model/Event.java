@@ -4,9 +4,11 @@ import java.util.List;
 
 public class Event {
 	private String id;
-	private String Title;
+	private String title;
 	private String about;
 	private String category;
+	private String type;
+	private float price;
 	private Address Venue;
 	private List<Float> coordinates;
 	private List<String> tags;
@@ -14,18 +16,21 @@ public class Event {
 	public Event() {
 		
 	}
-	public Event(String id, String title, String about, String category, Address venue, List<Float> coordinates,
-			List<String> tags, List<Day> days) {
+	public Event(String id, String title, String about, String category, String type, float price, Address venue,
+			List<Float> coordinates, List<String> tags, List<Day> days) {
 		super();
 		this.id = id;
-		Title = title;
+		this.title = title;
 		this.about = about;
 		this.category = category;
+		this.type = type;
+		this.price = price;
 		Venue = venue;
 		this.coordinates = coordinates;
 		this.tags = tags;
 		this.days = days;
 	}
+
 	public String getId() {
 		return id;
 	}
@@ -33,10 +38,10 @@ public class Event {
 		this.id = id;
 	}
 	public String getTitle() {
-		return Title;
+		return title;
 	}
 	public void setTitle(String title) {
-		Title = title;
+		title = title;
 	}
 	public String getAbout() {
 		return about;
@@ -49,6 +54,18 @@ public class Event {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
 	}
 	public Address getVenue() {
 		return Venue;
@@ -74,5 +91,6 @@ public class Event {
 	public void setDays(List<Day> days) {
 		this.days = days;
 	}
+	
 	
 }
