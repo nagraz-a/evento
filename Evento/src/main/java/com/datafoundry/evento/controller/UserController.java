@@ -50,12 +50,4 @@ public class UserController {
 	   return "login";
 	}
 }
-//	   if(status==true)
-//	   {
-//		   modelMap.addAttribute("msg",msg);
-//		   return "findlogin";
-//	   }
-//	   modelMap.addAttribute("msg",msg);
-//	   return "login";
-//	   }
 
