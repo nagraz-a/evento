@@ -33,6 +33,11 @@ public class UserController {
 	public User getUserbyEmail(@PathVariable String email){
 		return repository.findByEmail(email);
 	}
+	
+	@GetMapping("/findalldetails")
+    public List<User> getUser(){
+        return repository.findAll();
+        }
 	@GetMapping("/getlogin/{email}/{password}")
 	   public String getUserBylogin(@PathVariable String email,@PathVariable String password) {
 		User user=repository.findByEmail(email);
