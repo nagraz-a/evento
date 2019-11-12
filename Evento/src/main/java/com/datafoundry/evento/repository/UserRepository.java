@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.datafoundry.evento.model.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
-
+//login module//
 	User findByEmail(String email);
 
 	User findByPassword(String password);
