@@ -27,7 +27,8 @@ public class ManagementController
 	    return repository.findAll();
 	  }
 	  @RequestMapping(value = "/{eventTitle}", method = RequestMethod.GET)
-	  public Management getManagementByEventTitle(@PathVariable("eventTitle") String eventTitle) {
+	  public Management getManagementByEventTitle(@PathVariable("eventTitle") String eventTitle) 
+	  {
 		return repository.findByeventTitle(eventTitle);
 	  }
 
