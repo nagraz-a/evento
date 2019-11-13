@@ -26,10 +26,15 @@ public class ManagementController
 	  public List<Management> getAllManagement() {
 	    return repository.findAll();
 	  }
-	  @RequestMapping(value = "/{eventTitle}", method = RequestMethod.GET)
-	  public Management getManagementByEventTitle(@PathVariable("eventTitle") String eventTitle) 
-	  {
-		return repository.findByeventTitle(eventTitle);
+//	  @RequestMapping(value = "/{eventTitle}", method = RequestMethod.GET)
+//	  public Management getManagementByEventTitle(@PathVariable("eventTitle") String eventTitle) 
+//	  {
+//		return repository.findByeventTitle(eventTitle);
+//	  }
+//	  
+	  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	  public Management getManagementById(@PathVariable("id") String id) {
+		return repository.findByid(id);
 	  }
 
 	  

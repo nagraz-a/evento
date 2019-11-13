@@ -8,4 +8,6 @@ public interface ManagementRepository extends MongoRepository<Management, String
 
 	Management findByeventTitle(String eventTitle);
 
+	Management findByid(String id);
+
 }
