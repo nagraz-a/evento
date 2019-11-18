@@ -1,5 +1,5 @@
 //package com.datafoundry.evento.config;
-//
+// This is ony a comment you can remove
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.web.servlet.FilterRegistrationBean;
 //import org.springframework.context.annotation.Bean;
