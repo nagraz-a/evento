@@ -2,22 +2,26 @@ package com.datafoundry.evento.model;
 
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="event")
 public class Event {
 	@Id
 	private String id;
-	private String event_title;
+	@Field("event_title")
+	private String title;
 	private String event_type;
 	private String event_category;
-	private String organizer_name;
-	private String user;
+    private String organizer_name;
+	@DBRef
+    private User user;
 	private Address venue;
-	private String start_date;
-	private String end_date;
+	@Field("start_date")
+	private Date dayss;
+	private Date end_date;
 	private String summary;
 	private String text;
 	private String ticket_type;
@@ -34,19 +38,19 @@ public class Event {
 
 	}
 
-	public Event(String id, String event_title, String event_type, String event_category, String organizer_name,
-			String user, Address venue, String start_date, String end_date, String summary, String text,
-			String ticket_type, int number_of_tickets, int ticket_price, Date register_start_date,
-			Date register_end_date, String published, List<Float> coordinates, List<String> tags) {
+	public Event(String id, String title, String event_type, String event_category, String organizer_name, User user,
+			Address venue, Date dayss, Date end_date, String summary, String text, String ticket_type,
+			int number_of_tickets, int ticket_price, Date register_start_date, Date register_end_date, String published,
+			List<Float> coordinates, List<String> tags) {
 		super();
 		this.id = id;
-		this.event_title = event_title;
+		this.title = title;
 		this.event_type = event_type;
 		this.event_category = event_category;
 		this.organizer_name = organizer_name;
 		this.user = user;
 		this.venue = venue;
-		this.start_date = start_date;
+		this.dayss = dayss;
 		this.end_date = end_date;
 		this.summary = summary;
 		this.text = text;
@@ -68,12 +72,12 @@ public class Event {
 		this.id = id;
 	}
 
-	public String getEvent_title() {
-		return event_title;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setEvent_title(String event_title) {
-		this.event_title = event_title;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getEvent_type() {
@@ -100,11 +104,11 @@ public class Event {
 		this.organizer_name = organizer_name;
 	}
 
-	public String getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(String user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
@@ -116,19 +120,19 @@ public class Event {
 		this.venue = venue;
 	}
 
-	public String getStart_date() {
-		return start_date;
+	public Date getDayss() {
+		return dayss;
 	}
 
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
+	public void setDayss(Date dayss) {
+		this.dayss = dayss;
 	}
 
-	public String getEnd_date() {
+	public Date getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(String end_date) {
+	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
 
@@ -212,15 +216,16 @@ public class Event {
 		this.tags = tags;
 	}
 
-	@Override
-	public String toString() {
-		return "Event [id=" + id + ", event_title=" + event_title + ", event_type=" + event_type + ", event_category="
-				+ event_category + ", organizer_name=" + organizer_name + ", user=" + user + ", venue=" + venue
-				+ ", start_date=" + start_date + ", end_date=" + end_date + ", summary=" + summary + ", text=" + text
-				+ ", ticket_type=" + ticket_type + ", number_of_tickets=" + number_of_tickets + ", ticket_price="
-				+ ticket_price + ", register_start_date=" + register_start_date + ", register_end_date="
-				+ register_end_date + ", published=" + published + ", coordinates=" + coordinates + ", tags=" + tags
-				+ "]";
-	}
+	
+//	@Override
+//	public String toString() {
+//		return "Event [id=" + id + ", event_title=" + event_title + ", event_type=" + event_type + ", event_category="
+//				+ event_category + ", organizer_name=" + organizer_name + ", user=" + user + ", venue=" + venue
+//				+ ", start_date=" + start_date + ", end_date=" + end_date + ", summary=" + summary + ", text=" + text
+//				+ ", ticket_type=" + ticket_type + ", number_of_tickets=" + number_of_tickets + ", ticket_price="
+//				+ ticket_price + ", register_start_date=" + register_start_date + ", register_end_date="
+//				+ register_end_date + ", published=" + published + ", coordinates=" + coordinates + ", tags=" + tags
+//				+ "]";
+//	}
 	
 }
