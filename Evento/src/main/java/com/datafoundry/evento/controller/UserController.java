@@ -3,56 +3,61 @@ package com.datafoundry.evento.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.datafoundry.evento.model.User;
-import com.datafoundry.evento.repository.UserRepository;
+import com.datafoundry.evento.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
-	private UserRepository repository;
-	
+	private UserService service;
+
 	@PostMapping("/saveuser")
 	public String saveUser(@RequestBody User user) {
-		repository.save(user);
+		service.save(user);
 		return "User Saved Sucessfully........";
-		
-	}
+		}
+	
+	
 	@GetMapping("/getUser/{email}")
 	public User getUserbyEmail(@PathVariable String email){
-		return repository.findByEmail(email);
+		return service.findByEmail(email);
+	}
+
+	
+	@GetMapping("/getUserByAddress/{state}")
+	public List<User> getUserbyAddress(@PathVariable String state){
+		return service.findBystate(state);
 	}
 	
-	@GetMapping("/findalldetails")
-    public List<User> getUser(){
-        return repository.findAll();
-        }
+	@GetMapping("/getUserByCity/{city}")
+	public List<User> getUserbyCity(@PathVariable String city){
+		return service.findBycity(city);
+	}
+
+	
 	@GetMapping("/getlogin/{email}/{password}")
 	   public String getUserBylogin(@PathVariable String email,@PathVariable String password) {
-		User user=repository.findByEmail(email);
+		User user=service.findByEmail(email);
+
 	   if(user==null)
 	   {
-		   
-		   return "Invalid Username or Password";   
-		   
-		    
+		   return "Invalid Username or Password";    
 	   }
 	   
 	   else if(user.getEmail().equals(email) && user.getPassword().equals(password) ) {
 			   return "login is successfull";
 		   }
 	   return "login";
-	}
+	
+	}	
 }
 
