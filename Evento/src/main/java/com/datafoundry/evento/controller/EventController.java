@@ -16,7 +16,7 @@ import com.datafoundry.evento.service.EventService;
 @RequestMapping("/api/event")
 public class EventController 
 {
-	
+	//Autowired is used for connection between two classes//
 		@Autowired
 		  private EventService service;
 		  
