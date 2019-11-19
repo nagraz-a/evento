@@ -1,17 +1,14 @@
 package com.datafoundry.evento.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.datafoundry.evento.model.EventRegistration;
 import com.datafoundry.evento.repository.EventRegistrationRepository;
 
 @Service
-public class EventRegistrationImpl implements EventRegistrationService {
+public class EventRegistrationServiceImpl implements EventRegistrationService {
 
-	//implementing the abstract methods//
 	@Autowired
 	private EventRegistrationRepository repository;
 
@@ -31,8 +28,14 @@ public class EventRegistrationImpl implements EventRegistrationService {
 	}
 
 	@Override
-	public List<EventRegistration> findByUser(String user_id) {
-		return repository.findByUser(user_id);
+	public List<EventRegistration> findByUser(String user) {
+		return repository.findByUser(user);
 	}
 
+//	@Override
+//	public List<EventRegistration> findByEvent(String event) {
+//		return repository.findByEvent(event);
+//	}
+
+	
 }

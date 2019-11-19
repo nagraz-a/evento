@@ -1,7 +1,6 @@
 package com.datafoundry.evento.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.datafoundry.evento.model.EventRegistration;
 import com.datafoundry.evento.service.EventRegistrationService;
 
@@ -17,7 +17,6 @@ import com.datafoundry.evento.service.EventRegistrationService;
 @RequestMapping("/eventregistration")
 public class EventRegistrationController {
 	
-	//autowired is used to connect from one class to another class//
 	@Autowired
 	private EventRegistrationService service;
 	
@@ -37,11 +36,21 @@ public class EventRegistrationController {
 		return service.findByid(id);
 	}
 	
-	 @GetMapping("/geteventregistrationbyuserid/{user_id}")
-	 public List<EventRegistration> getEventRegistrationByUser(@PathVariable String user_id)
-	 {
-	return service.findByUser(user_id);
+	 @GetMapping("/geteventregistrationbyuserid/{user}")
+	 public List<EventRegistration> getEventRegistrationByUser(@PathVariable String user) {
+	return service.findByUser(user);
 	 }
+	 
+//	 @GetMapping("/geteventregistrationbyeventid/{event}")
+//	 public List<EventRegistration> getEventRegistrationByEvent(@PathVariable String event){
+//		 return service.findByEvent(event);
+//	 }
+	 
+//	 @GetMapping("/geteventregistrationbyuserideventid/{user}/{event}")
+//	 public List<EventRegistration> getEventRegistrationByEventUser(@PathVariable String user,@PathVariable String event)
+//	 return null;
+//}
 }
+
 	
 
