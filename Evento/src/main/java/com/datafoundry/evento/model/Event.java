@@ -17,10 +17,10 @@ public class Event {
 	private String event_category;
     private String organizer_name;
 	@DBRef
-    private User user;
+    private User owner;
 	private Address venue;
 	@Field("start_date")
-	private Date dayss;
+	private Date day;
 	private Date end_date;
 	private String summary;
 	private String text;
@@ -38,8 +38,8 @@ public class Event {
 
 	}
 
-	public Event(String id, String title, String event_type, String event_category, String organizer_name, User user,
-			Address venue, Date dayss, Date end_date, String summary, String text, String ticket_type,
+	public Event(String id, String title, String event_type, String event_category, String organizer_name, User owner,
+			Address venue, Date day, Date end_date, String summary, String text, String ticket_type,
 			int number_of_tickets, int ticket_price, Date register_start_date, Date register_end_date, String published,
 			List<Float> coordinates, List<String> tags) {
 		super();
@@ -48,9 +48,9 @@ public class Event {
 		this.event_type = event_type;
 		this.event_category = event_category;
 		this.organizer_name = organizer_name;
-		this.user = user;
+		this.owner = owner;
 		this.venue = venue;
-		this.dayss = dayss;
+		this.day = day;
 		this.end_date = end_date;
 		this.summary = summary;
 		this.text = text;
@@ -104,12 +104,12 @@ public class Event {
 		this.organizer_name = organizer_name;
 	}
 
-	public User getUser() {
-		return user;
+	public User getOwner() {
+		return owner;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 
 	public Address getVenue() {
@@ -120,12 +120,12 @@ public class Event {
 		this.venue = venue;
 	}
 
-	public Date getDayss() {
-		return dayss;
+	public Date getDay() {
+		return day;
 	}
 
-	public void setDayss(Date dayss) {
-		this.dayss = dayss;
+	public void setDay(Date day) {
+		this.day = day;
 	}
 
 	public Date getEnd_date() {

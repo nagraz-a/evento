@@ -1,12 +1,10 @@
 package com.datafoundry.evento.service;
 
+
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.datafoundry.evento.model.Event;
 import com.datafoundry.evento.repository.EventRepository;
 
@@ -36,11 +34,6 @@ public class EventServiceImpl implements EventService {
 		return repository.findByUserid(id);
 	}
 
-//	@Override
-//	public List<Event> findByemail(String email) {
-//		return repository.findByemail(email);
-//	}
-
 	@Override
 	public List<Event> findByCity(String city) {
 		return repository.findByCity(city);
@@ -50,5 +43,4 @@ public class EventServiceImpl implements EventService {
 	public Event save(@Valid Event event) {
 		return repository.save(event);
 	}
-
 }

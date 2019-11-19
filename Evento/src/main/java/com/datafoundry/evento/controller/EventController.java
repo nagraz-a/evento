@@ -1,6 +1,5 @@
 package com.datafoundry.evento.controller;
 
-
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,30 +21,28 @@ public class EventController
 		  private EventService service;
 		  
 		  @RequestMapping(value = "/", method = RequestMethod.GET)
-		  public List<Event> getAllEvent() {
+		  public List<Event> getAllEvent()
+		  {
 		    return service.findAll();
 		  }
 		  
 		  @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-		  public Event getEventById(@PathVariable("id") String id) {
+		  public Event getEventById(@PathVariable("id") String id)
+		  {
 			return service.findByid(id);
 		  }
 		  
-		  @RequestMapping(value = "/titleName/{title}", method = RequestMethod.GET)
-		  public Event getEventByTitle(@PathVariable("title") String title) {
+		  @RequestMapping(value = "/eventByTitle/{title}", method = RequestMethod.GET)
+		  public Event getEventByTitle(@PathVariable("title") String title) 
+		  {
 			return service.findBytitle(title);
 		  }
 		  
 		  @GetMapping("/getEventByUser/{id}")
-			public List<Event> getEventbyUser(@PathVariable String id){
+		  public List<Event> getEventbyUser(@PathVariable String id)
+		  {
 				return service.findByUserid(id);
-			}
-		  
-		  
-//		  @GetMapping("/getEventByEmail/{id}/{email}")
-//			public List<Event> getEventbyEmail(@PathVariable String id,@PathVariable String email){
-//				return service.findByemail(email);
-//			}
+		  }
 
 		  @GetMapping("/getEventByvenue/{city}")
 		  public List<Event> getEventbyvenue(@PathVariable String city)
@@ -53,7 +50,6 @@ public class EventController
 			  return service.findByCity(city);
 		  }	  
 		  
-		
 		  	  
 		  @RequestMapping(value = "/", method = RequestMethod.POST)
 		  public Event createEvent(@Valid @RequestBody Event event) {

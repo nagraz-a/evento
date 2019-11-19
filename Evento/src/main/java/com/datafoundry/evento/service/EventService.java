@@ -1,10 +1,9 @@
 package com.datafoundry.evento.service;
 
 import java.util.List;
-
 import javax.validation.Valid;
-
 import com.datafoundry.evento.model.Event;
+
 
 public interface EventService {
 
@@ -16,10 +15,8 @@ public interface EventService {
 
 	List<Event> findByUserid(String id);
 
-	//List<Event> findByemail(String email);
-
+	
 	List<Event> findByCity(String city);
 
 	Event save(@Valid Event event);
-
 }
