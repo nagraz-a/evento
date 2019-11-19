@@ -5,7 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="EventRegistration")
+
+@Document(collection="eventRegistration")
 public class EventRegistration {
 @Id
 private String id;
@@ -18,18 +19,17 @@ private String shortlist_status;
 private String comments;
 private String ticket_id;
 private String registration_type;
-//@DBRef
-//private Event event;
-//.............................//
 @DBRef
-private User user;
+private Event event;
+@DBRef
+private User participant;
 
 public EventRegistration()
-{
-	}
+{}
 
 public EventRegistration(String id, String course, String branch, String year, Date register_date, double amount_paid,
-		String shortlist_status, String comments, String ticket_id, String registration_type, User user) {
+		String shortlist_status, String comments, String ticket_id, String registration_type, Event event,
+		User participant) {
 	super();
 	this.id = id;
 	this.course = course;
@@ -41,8 +41,8 @@ public EventRegistration(String id, String course, String branch, String year, D
 	this.comments = comments;
 	this.ticket_id = ticket_id;
 	this.registration_type = registration_type;
-//	this.event = event;
-	this.user = user;
+	this.event = event;
+	this.participant = participant;
 }
 
 public String getId() {
@@ -125,22 +125,27 @@ public void setRegistration_type(String registration_type) {
 	this.registration_type = registration_type;
 }
 
-//public Event getEvent() {
-//	return event;
-//}
-//
-//public void setEvent(Event event) {
-//	this.event = event;
-//}
-
-public User getUser() {
-	return user;
+public Event getEvent() {
+	return event;
 }
 
-public void setUser(User user) {
-	this.user = user;
+public void setEvent(Event event) {
+	this.event = event;
 }
 
+public User getParticipant() {
+	return participant;
+}
 
+public void setParticipant(User participant) {
+	this.participant = participant;
+}
 
+@Override
+public String toString() {
+	return "EventRegistration [id=" + id + ", course=" + course + ", branch=" + branch + ", year=" + year
+			+ ", register_date=" + register_date + ", amount_paid=" + amount_paid + ", shortlist_status="
+			+ shortlist_status + ", comments=" + comments + ", ticket_id=" + ticket_id + ", registration_type="
+			+ registration_type + ", event=" + event + ", participant=" + participant + "]";
+}
 }

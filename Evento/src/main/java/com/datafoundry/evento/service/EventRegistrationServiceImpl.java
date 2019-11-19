@@ -13,6 +13,11 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
 	private EventRegistrationRepository repository;
 
 	@Override
+	public EventRegistration save(EventRegistration eventregistration) {
+		return repository.save(eventregistration);
+	}
+
+	@Override
 	public List<EventRegistration> findAll() {
 		return repository.findAll();
 	}
@@ -23,19 +28,14 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
 	}
 
 	@Override
-	public EventRegistration save(EventRegistration eventregistration) {
-		return repository.save(eventregistration);
+	public List<EventRegistration> findByUser(String participant) {
+		return repository.findByUser(participant);
 	}
 
 	@Override
-	public List<EventRegistration> findByUser(String user) {
-		return repository.findByUser(user);
+	public List<EventRegistration> findByEvent(String event) {
+		
+		return repository.findByEvent(event) ;
 	}
 
-//	@Override
-//	public List<EventRegistration> findByEvent(String event) {
-//		return repository.findByEvent(event);
-//	}
-
-	
 }

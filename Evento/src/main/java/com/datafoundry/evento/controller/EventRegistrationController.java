@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.datafoundry.evento.model.EventRegistration;
 import com.datafoundry.evento.service.EventRegistrationService;
 
@@ -35,21 +34,17 @@ public class EventRegistrationController {
 	public EventRegistration getEventRegistrationbyId(@PathVariable String id){
 		return service.findByid(id);
 	}
-	
-	 @GetMapping("/geteventregistrationbyuserid/{user}")
-	 public List<EventRegistration> getEventRegistrationByUser(@PathVariable String user) {
-	return service.findByUser(user);
+
+	 @GetMapping("/geteventregistrationbyuserid/{participant}")
+	 public List<EventRegistration> getEventRegistrationByUser(@PathVariable String participant) {
+		 return service.findByUser(participant);
 	 }
-	 
-//	 @GetMapping("/geteventregistrationbyeventid/{event}")
-//	 public List<EventRegistration> getEventRegistrationByEvent(@PathVariable String event){
-//		 return service.findByEvent(event);
-//	 }
-	 
-//	 @GetMapping("/geteventregistrationbyuserideventid/{user}/{event}")
-//	 public List<EventRegistration> getEventRegistrationByEventUser(@PathVariable String user,@PathVariable String event)
-//	 return null;
-//}
+ 
+	 @GetMapping("/geteventregistrationbyeventid/{event}")
+	 public List<EventRegistration> getEventRegistrationByEvent(@PathVariable String event){
+		 return service.findByEvent(event);
+	 }
+
 }
 
 	

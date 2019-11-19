@@ -11,7 +11,8 @@ EventRegistration findByid(String id);
 
 EventRegistration save(EventRegistration eventregistration);
 
-List<EventRegistration> findByUser(String user);
+List<EventRegistration> findByUser(String participant);
 
-//List<EventRegistration> findByEvent(String event);
+List<EventRegistration> findByEvent(String event);
+
 }
