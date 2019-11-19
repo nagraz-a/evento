@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 @Data
-@AllArgsConstructor
 @Document(collection="test")
 public class Test {
 	@Id
