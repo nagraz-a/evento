@@ -20,7 +20,7 @@ private String ticket_id;
 private String registration_type;
 //@DBRef
 //private Event event;
-//......//
+//...............//
 @DBRef
 private User user;
 
