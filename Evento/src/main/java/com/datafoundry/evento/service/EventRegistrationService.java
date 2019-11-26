@@ -5,14 +5,26 @@ import com.datafoundry.evento.model.EventRegistration;
 
 public interface EventRegistrationService {
 
+<<<<<<< HEAD
 List<EventRegistration> findAll();
+=======
+	EventRegistration save(EventRegistration eventregistration);
+>>>>>>> refs/remotes/origin/master
 
-EventRegistration findByid(String id);
+	List<EventRegistration> findAll();
 
-EventRegistration save(EventRegistration eventregistration);
+	EventRegistration findByid(String id);
 
+<<<<<<< HEAD
 List<EventRegistration> findByUser(String participant);
 
 List<EventRegistration> findByEvent(String event);
 
+=======
+	List<EventRegistration> findByUser(String participant);
+
+	List<EventRegistration> findByEvent(String event);
+
+	
+>>>>>>> refs/remotes/origin/master
 }
