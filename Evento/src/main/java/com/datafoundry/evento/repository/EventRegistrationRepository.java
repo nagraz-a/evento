@@ -10,10 +10,13 @@ import com.datafoundry.evento.model.EventRegistration;
 
 @Repository
 public interface EventRegistrationRepository extends MongoRepository<EventRegistration,String>{
-//repository..//
+
 	EventRegistration findByid(String id);
+
+	@Query("{'participant.id':?0}")
+	List<EventRegistration> findByUser(String participant);
 	
-	@Query("{'User.id':?0}")
-	List<EventRegistration> findByUser(String user_id);
+	@Query("{'event.id':?0}")
+	List<EventRegistration> findByEvent(String event);
 
 }

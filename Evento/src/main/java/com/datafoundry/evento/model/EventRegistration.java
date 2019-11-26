@@ -3,151 +3,149 @@ package com.datafoundry.evento.model;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="EventRegistration")
+@Document(collection="eventRegistration")
 public class EventRegistration {
-	@Id
-private String id;
-private String user_id;
-private String event_id;
-private String course;
-private String branch;
-private String year;
-private Date register_date;
-private double amount_paid;
-private String shortlist_status;
-private String comments;
-private String ticket_id;
-private String registration_type;
+	@Id		//Act as a primary Identifier
+	private String id;
+	private String course;
+	private String branch;
+	private String year;
+	private Date register_date;
+	private double amount_paid;
+	private String shortlist_status;
+	private String comments;
+	private String ticket_id;
+	private String registration_type;
+	@DBRef
+	private Event event;
+	@DBRef
+	private User participant;
 
-public EventRegistration()
-{
+	public EventRegistration()
+	{}
+
+	public EventRegistration(String id, String course, String branch, String year, Date register_date, double amount_paid,
+			String shortlist_status, String comments, String ticket_id, String registration_type, Event event,
+			User participant) {
+		super();
+		this.id = id;
+		this.course = course;
+		this.branch = branch;
+		this.year = year;
+		this.register_date = register_date;
+		this.amount_paid = amount_paid;
+		this.shortlist_status = shortlist_status;
+		this.comments = comments;
+		this.ticket_id = ticket_id;
+		this.registration_type = registration_type;
+		this.event = event;
+		this.participant = participant;
 	}
 
-public EventRegistration(String id, String user_id, String event_id, String course, String branch, String year,
-		Date register_date, double amount_paid, String shortlist_status, String comments, String ticket_id,
-		String registration_type) {
-	super();
-	this.id = id;
-	this.user_id = user_id;
-	this.event_id = event_id;
-	this.course = course;
-	this.branch = branch;
-	this.year = year;
-	this.register_date = register_date;
-	this.amount_paid = amount_paid;
-	this.shortlist_status = shortlist_status;
-	this.comments = comments;
-	this.ticket_id = ticket_id;
-	this.registration_type = registration_type;
-}
+	public String getId() {
+		return id;
+	}
 
-public String getId() {
-	return id;
-}
+	public void setId(String id) {
+		this.id = id;
+	}
 
-public void setId(String id) {
-	this.id = id;
-}
+	public String getCourse() {
+		return course;
+	}
 
-public String getUser_id() {
-	return user_id;
-}
+	public void setCourse(String course) {
+		this.course = course;
+	}
 
-public void setUser_id(String user_id) {
-	this.user_id = user_id;
-}
+	public String getBranch() {
+		return branch;
+	}
 
-public String getEvent_id() {
-	return event_id;
-}
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
 
-public void setEvent_id(String event_id) {
-	this.event_id = event_id;
-}
+	public String getYear() {
+		return year;
+	}
 
-public String getCourse() {
-	return course;
-}
+	public void setYear(String year) {
+		this.year = year;
+	}
 
-public void setCourse(String course) {
-	this.course = course;
-}
+	public Date getRegister_date() {
+		return register_date;
+	}
 
-public String getBranch() {
-	return branch;
-}
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
+	}
 
-public void setBranch(String branch) {
-	this.branch = branch;
-}
+	public double getAmount_paid() {
+		return amount_paid;
+	}
 
-public String getYear() {
-	return year;
-}
+	public void setAmount_paid(double amount_paid) {
+		this.amount_paid = amount_paid;
+	}
 
-public void setYear(String year) {
-	this.year = year;
-}
+	public String getShortlist_status() {
+		return shortlist_status;
+	}
 
-public Date getRegister_date() {
-	return register_date;
-}
+	public void setShortlist_status(String shortlist_status) {
+		this.shortlist_status = shortlist_status;
+	}
 
-public void setRegister_date(Date register_date) {
-	this.register_date = register_date;
-}
+	public String getComments() {
+		return comments;
+	}
 
-public double getAmount_paid() {
-	return amount_paid;
-}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
-public void setAmount_paid(double amount_paid) {
-	this.amount_paid = amount_paid;
-}
+	public String getTicket_id() {
+		return ticket_id;
+	}
 
-public String getShortlist_status() {
-	return shortlist_status;
-}
+	public void setTicket_id(String ticket_id) {
+		this.ticket_id = ticket_id;
+	}
 
-public void setShortlist_status(String shortlist_status) {
-	this.shortlist_status = shortlist_status;
-}
+	public String getRegistration_type() {
+		return registration_type;
+	}
 
-public String getComments() {
-	return comments;
-}
+	public void setRegistration_type(String registration_type) {
+		this.registration_type = registration_type;
+	}
 
-public void setComments(String comments) {
-	this.comments = comments;
-}
+	public Event getEvent() {
+		return event;
+	}
 
-public String getTicket_id() {
-	return ticket_id;
-}
+	public void setEvent(Event event) {
+		this.event = event;
+	}
 
-public void setTicket_id(String ticket_id) {
-	this.ticket_id = ticket_id;
-}
+	public User getParticipant() {
+		return participant;
+	}
 
-public String getRegistration_type() {
-	return registration_type;
-}
+	public void setParticipant(User participant) {
+		this.participant = participant;
+	}
 
-public void setRegistration_type(String registration_type) {
-	this.registration_type = registration_type;
-}
-
-@Override
-public String toString() {
-	return "EventRegistration [id=" + id + ", user_id=" + user_id + ", event_id=" + event_id + ", course=" + course
-			+ ", branch=" + branch + ", year=" + year + ", register_date=" + register_date + ", amount_paid="
-			+ amount_paid + ", shortlist_status=" + shortlist_status + ", comments=" + comments + ", ticket_id="
-			+ ticket_id + ", registration_type=" + registration_type + "]";
-}
-
-
-
-
-}
+	@Override
+	public String toString() {
+		return "EventRegistration [id=" + id + ", course=" + course + ", branch=" + branch + ", year=" + year
+				+ ", register_date=" + register_date + ", amount_paid=" + amount_paid + ", shortlist_status="
+				+ shortlist_status + ", comments=" + comments + ", ticket_id=" + ticket_id + ", registration_type="
+				+ registration_type + ", event=" + event + ", participant=" + participant + "]";
+	}
+	}
