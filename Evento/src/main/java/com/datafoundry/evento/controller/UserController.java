@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.datafoundry.evento.model.Event;
 import com.datafoundry.evento.model.User;
 import com.datafoundry.evento.service.UserService;
 
@@ -19,12 +21,24 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
-
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	  public List<User> getAllUser()
+	  {
+	    return service.findAll();
+	  }
+	
 	@PostMapping("/saveuser")
-	public String saveUser(@RequestBody User user) {
-		service.save(user);
+	public String saveUser(@RequestBody String first_name) {
+		service.save(first_name);
 		return "User Saved Sucessfully........";
 		}
+
+//	@PostMapping("/saveuser")
+//	public String saveUser(@RequestBody User user) {
+//		service.save(user);
+//		return "User Saved Sucessfully........";
+//		}
 	
 	
 	@GetMapping("/getUser/{email}")

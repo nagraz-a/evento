@@ -20,10 +20,13 @@ public class UserServiceImpl implements UserService{
 		return repository.findByEmail(email);
 	}
 
+//	@Override
+//	public User save(User user) {
+//		return repository.save(user);
+//		
 	@Override
-	public User save(User user) {
-		return repository.save(user);
-		
+	public User save(String first_name) {
+		return repository.save(first_name);
 	}
 
 	@Override
@@ -39,6 +42,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findByPassword(String password) {
 		return repository.findByPassword(password);
+	}
+
+	@Override
+	public List<User> findAll() {
+		
+		return repository.findAll();
 	}
 
 	

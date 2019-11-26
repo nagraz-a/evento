@@ -8,7 +8,7 @@ import com.datafoundry.evento.model.User;
 
 public interface UserService {
 	
-	User save(User user);
+	User save(String first_name);
 
 
 	User findByEmail(String email);
@@ -21,6 +21,9 @@ public interface UserService {
 
 	
 	User findByPassword(String password);
+
+
+	List<User> findAll();
 
 	
 

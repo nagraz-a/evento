@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.datafoundry.evento.model.Event;
 import com.datafoundry.evento.repository.EventRepository;
 
+
+//In this business logic is present to perform crud operations
 @Service
 public class EventServiceImpl implements EventService {
 

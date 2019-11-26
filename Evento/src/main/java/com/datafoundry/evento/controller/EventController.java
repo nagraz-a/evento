@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.datafoundry.evento.model.Event;
 import com.datafoundry.evento.service.EventService;
 
-@RestController
-@RequestMapping("/api/event")
+@RestController		//It is used to create Restful web services
+@RequestMapping("/api/event")		//It is used to map web request or used to create base uri
 public class EventController 
 {
 	//Autowired is used for connection between two classes//
@@ -32,11 +32,15 @@ public class EventController
 			return service.findByid(id);
 		  }
 		  
+		  //@pathvariable is used for data passed in the uri
+		  
 		  @RequestMapping(value = "/eventByTitle/{title}", method = RequestMethod.GET)
 		  public Event getEventByTitle(@PathVariable("title") String title) 
 		  {
 			return service.findBytitle(title);
 		  }
+		  
+		  //Get mapping is used to get the data
 		  
 		  @GetMapping("/getEventByUser/{id}")
 		  public List<Event> getEventbyUser(@PathVariable String id)
@@ -50,7 +54,9 @@ public class EventController
 			  return service.findByCity(city);
 		  }	  
 		  
-		  	  
+		  
+		  //post mapping is used to insert the new data
+		  
 		  @RequestMapping(value = "/", method = RequestMethod.POST)
 		  public Event createEvent(@Valid @RequestBody Event event) {
 		    service.save(event);

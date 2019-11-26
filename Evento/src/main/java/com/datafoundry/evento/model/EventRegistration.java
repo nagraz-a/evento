@@ -1,16 +1,15 @@
 package com.datafoundry.evento.model;
 
 import java.util.Date;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="EventRegistration")
+
+@Document(collection="eventRegistration")
 public class EventRegistration {
-	@Id
+@Id		//Act as a primary Identifier
 private String id;
-private String user_id;
-private String event_id;
 private String course;
 private String branch;
 private String year;
@@ -20,18 +19,19 @@ private String shortlist_status;
 private String comments;
 private String ticket_id;
 private String registration_type;
+@DBRef
+private Event event;
+@DBRef
+private User participant;
 
 public EventRegistration()
-{
-	}
+{}
 
-public EventRegistration(String id, String user_id, String event_id, String course, String branch, String year,
-		Date register_date, double amount_paid, String shortlist_status, String comments, String ticket_id,
-		String registration_type) {
+public EventRegistration(String id, String course, String branch, String year, Date register_date, double amount_paid,
+		String shortlist_status, String comments, String ticket_id, String registration_type, Event event,
+		User participant) {
 	super();
 	this.id = id;
-	this.user_id = user_id;
-	this.event_id = event_id;
 	this.course = course;
 	this.branch = branch;
 	this.year = year;
@@ -41,6 +41,8 @@ public EventRegistration(String id, String user_id, String event_id, String cour
 	this.comments = comments;
 	this.ticket_id = ticket_id;
 	this.registration_type = registration_type;
+	this.event = event;
+	this.participant = participant;
 }
 
 public String getId() {
@@ -49,22 +51,6 @@ public String getId() {
 
 public void setId(String id) {
 	this.id = id;
-}
-
-public String getUser_id() {
-	return user_id;
-}
-
-public void setUser_id(String user_id) {
-	this.user_id = user_id;
-}
-
-public String getEvent_id() {
-	return event_id;
-}
-
-public void setEvent_id(String event_id) {
-	this.event_id = event_id;
 }
 
 public String getCourse() {
@@ -139,15 +125,27 @@ public void setRegistration_type(String registration_type) {
 	this.registration_type = registration_type;
 }
 
-@Override
-public String toString() {
-	return "EventRegistration [id=" + id + ", user_id=" + user_id + ", event_id=" + event_id + ", course=" + course
-			+ ", branch=" + branch + ", year=" + year + ", register_date=" + register_date + ", amount_paid="
-			+ amount_paid + ", shortlist_status=" + shortlist_status + ", comments=" + comments + ", ticket_id="
-			+ ticket_id + ", registration_type=" + registration_type + "]";
+public Event getEvent() {
+	return event;
 }
 
+public void setEvent(Event event) {
+	this.event = event;
+}
 
+public User getParticipant() {
+	return participant;
+}
 
+public void setParticipant(User participant) {
+	this.participant = participant;
+}
 
+@Override
+public String toString() {
+	return "EventRegistration [id=" + id + ", course=" + course + ", branch=" + branch + ", year=" + year
+			+ ", register_date=" + register_date + ", amount_paid=" + amount_paid + ", shortlist_status="
+			+ shortlist_status + ", comments=" + comments + ", ticket_id=" + ticket_id + ", registration_type="
+			+ registration_type + ", event=" + event + ", participant=" + participant + "]";
+}
 }

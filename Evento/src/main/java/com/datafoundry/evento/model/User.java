@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//To identify a domain object to be persisted to MongoDB
 @Document(collection="user")
 public class User {
-	@Id
+	@Id		//Act as a primary Identifier
 	private String id;
 	private String first_name;
 	private String last_name;
@@ -26,6 +27,8 @@ public class User {
 		
 	}
 
+	//create constructor
+	
 	public User(String id, String first_name, String last_name, String gender, String email, String phone_no,
 			String password, Address address, Date last_login, List<String> intrests, String token, String status,
 			boolean is_active) {
@@ -45,6 +48,11 @@ public class User {
 		this.is_active = is_active;
 	}
 
+	
+	//create getter and setter method
+	//getter() reads the value of the variable
+	//setter() sets or update value for variable
+		
 	public String getId() {
 		return id;
 	}

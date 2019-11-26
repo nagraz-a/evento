@@ -7,16 +7,19 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+// @Document to define a “collection name” when you save this object in mongodb.
+//In this case, when “event” object saves, it will save into “event” collection
+
 @Document(collection="event")
 public class Event {
-	@Id
+	@Id		//Act as a primary Identifier
 	private String id;
-	@Field("event_title")
+	@Field("event_title")		//gives a name to the key to be used to store the field inside the document.
 	private String title;
 	private String event_type;
 	private String event_category;
     private String organizer_name;
-	@DBRef
+	@DBRef		//stores to a document, rather than embedding it directly in the parent document
     private User owner;
 	private Address venue;
 	@Field("start_date")
@@ -37,6 +40,8 @@ public class Event {
 	{
 
 	}
+	
+	//create constructor
 
 	public Event(String id, String title, String event_type, String event_category, String organizer_name, User owner,
 			Address venue, Date day, Date end_date, String summary, String text, String ticket_type,
@@ -64,6 +69,12 @@ public class Event {
 		this.tags = tags;
 	}
 
+	
+	//create getter and setter method
+	//getter() reads the value of the variable
+	//setter() sets or update value for variable
+	
+	
 	public String getId() {
 		return id;
 	}

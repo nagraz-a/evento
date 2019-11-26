@@ -1,19 +1,21 @@
 package com.datafoundry.evento.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.datafoundry.evento.model.EventRegistration;
 import com.datafoundry.evento.repository.EventRegistrationRepository;
 
 @Service
-public class EventRegistrationImpl implements EventRegistrationService {
+public class EventRegistrationServiceImpl implements EventRegistrationService {
 
-	//implementing the abstract methods//
 	@Autowired
 	private EventRegistrationRepository repository;
+
+	@Override
+	public EventRegistration save(EventRegistration eventregistration) {
+		return repository.save(eventregistration);
+	}
 
 	@Override
 	public List<EventRegistration> findAll() {
@@ -26,13 +28,14 @@ public class EventRegistrationImpl implements EventRegistrationService {
 	}
 
 	@Override
-	public EventRegistration save(EventRegistration eventregistration) {
-		return repository.save(eventregistration);
+	public List<EventRegistration> findByUser(String participant) {
+		return repository.findByUser(participant);
 	}
 
 	@Override
-	public List<EventRegistration> findByUser(String user_id) {
-		return repository.findByUser(user_id);
+	public List<EventRegistration> findByEvent(String event) {
+		
+		return repository.findByEvent(event) ;
 	}
 
 }
