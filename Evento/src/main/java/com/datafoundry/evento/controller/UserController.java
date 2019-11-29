@@ -2,6 +2,8 @@ package com.datafoundry.evento.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,9 +60,13 @@ public class UserController {
 	public List<User> getUserbyCity(@PathVariable String city){
 		return service.findBycity(city);
 	}
-
+//	@RequestMapping(value = "/", method = RequestMethod.POST)
+//	  public Event createEvent(@Valid @RequestBody Event event) {
+//	    service.save(event);
+//	    return event;
+//	  }
 	
-	@GetMapping("/getlogin/{email}/{password}")
+	@PostMapping("/login/{email}/{password}")
 	   public String getUserBylogin(@PathVariable String email,@PathVariable String password) {
 		User user=service.findByEmail(email);
 
