@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.datafoundry.evento.model.EventRegistration;
 
+//It annotates classes at the persistence layer(DAO), which will act as a database repository//
 @Repository
 public interface EventRegistrationRepository extends MongoRepository<EventRegistration,String>{
 	

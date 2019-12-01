@@ -4,7 +4,7 @@ import java.util.List;
 import com.datafoundry.evento.model.EventRegistration;
 
 public interface EventRegistrationService {
-
+//abstract methods //
 	List<EventRegistration> findAll();
 
 	EventRegistration findByid(String id);

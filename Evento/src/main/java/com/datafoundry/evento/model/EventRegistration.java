@@ -6,9 +6,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//@Document to define a “collection name” where you save this object in mongodb//
+//In this case, when “eventRegistration” object saves, it will save into “eventRegistration” collection//
 @Document(collection="eventRegistration")
 public class EventRegistration {
-	@Id	
+	@Id	//Act as a primary Identifier
 	private String id;
 	private String course;
 	private String branch;
@@ -19,7 +21,7 @@ public class EventRegistration {
 	private String comments;
 	private String ticket_id;
 	private String registration_type;
-	@DBRef
+	@DBRef		//stores to a document, rather than embedding it directly in the parent document//
 	private Event event;
 	@DBRef
 	private User participant;
@@ -27,6 +29,7 @@ public class EventRegistration {
 	public EventRegistration()
 	{}
 
+	//create constructor to store the values in a particular variable//
 	public EventRegistration(String id, String course, String branch, String year, Date register_date, double amount_paid,
 			String shortlist_status, String comments, String ticket_id, String registration_type, Event event,
 			User participant) {
@@ -44,6 +47,11 @@ public class EventRegistration {
 		this.event = event;
 		this.participant = participant;
 	}
+	
+	//create getter and setter method//
+		//getter() reads the value of the variable//
+		//setter() sets or update value for variable//
+		
 
 	public String getId() {
 		return id;
@@ -141,6 +149,7 @@ public class EventRegistration {
 		this.participant = participant;
 	}
 
+	//To String method is used to return the useful information//
 	@Override
 	public String toString() {
 		return "EventRegistration [id=" + id + ", course=" + course + ", branch=" + branch + ", year=" + year

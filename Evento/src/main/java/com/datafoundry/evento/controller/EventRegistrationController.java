@@ -12,29 +12,35 @@ import org.springframework.web.bind.annotation.RestController;
 import com.datafoundry.evento.model.EventRegistration;
 import com.datafoundry.evento.service.EventRegistrationService;
 
-@RestController	
-@RequestMapping("/api/EventRegistration")		
+@RestController	//It is used to create Restful web services//
+@RequestMapping("/api/EventRegistration")	//It is used to map web request or used to create base uri//
+	
 public class EventRegistrationController {
 
+	//Autowired is used for connection between two classes//
 	@Autowired
 	private EventRegistrationService service;
 	
+	  //post mapping is used to insert the new data//
 	@PostMapping("saveEventRegistration")
 	public String saveEventRegistration(@RequestBody EventRegistration eventregistration) {
 	service.save(eventregistration);
 	return "saved successfully";
 	}
 	
+	//Get mapping is used to get the data//
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public List<EventRegistration> getAllEventRegistration(){
 		return service.findAll();
 	}
 	
+	//@pathvariable is used for data passed in the uri//
 	@GetMapping("/getEventRegistration/{id}")
 	public EventRegistration getEventRegistrationbyId(@PathVariable String id) {
 		return service.findByid(id);
 	}
 	
+	//Get mapping is used to retrive the data//
 	@GetMapping("/getEventRegistrationbyuserid/{participant}")
 	public List<EventRegistration> getEventRegistrationByUser(@PathVariable String participant) {
 		return service.findByUser(participant);
