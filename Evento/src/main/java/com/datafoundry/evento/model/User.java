@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-//To identify a domain object to be persisted to MongoDB
+//@Document to define a “collection name” when you save this object in mongodb.
+//In this case, when “event” object saves, it will save into “event” collection
+
 @Document(collection="user")
 public class User {
 	@Id		//Act as a primary Identifier
@@ -27,8 +29,7 @@ public class User {
 		
 	}
 
-	//create constructor
-	
+	//create constructor to store the values in a particular variable//
 	public User(String id, String first_name, String last_name, String gender, String email, String phone_no,
 			String password, Address address, Date last_login, List<String> intrests, String token, String status,
 			boolean is_active) {
@@ -156,18 +157,15 @@ public class User {
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
 	}
-
 	
-	
-	
-
-//	@Override
-//	public String toString() {
-//		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", gender=" + gender
-//				+ ", email=" + email + ", phoneno=" + phoneno + ", password=" + password + ", address=" + address
-//				+ ", last_login=" + last_login + ", intrests=" + intrests + ", token=" + token + ", status=" + status
-//				+ ", is_active=" + is_active + "]";
-//	}
+	//To String method is used to return the useful information//
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", gender=" + gender
+				+ ", email=" + email + ", phoneno=" + phone_no + ", password=" + password + ", address=" + address
+				+ ", last_login=" + last_login + ", intrests=" + intrests + ", token=" + token + ", status=" + status
+				+ ", is_active=" + is_active + "]";
+	}
 
 	
 	

@@ -1,9 +1,6 @@
-package com.datafoundry.evento.controller;
+ package com.datafoundry.evento.controller;
 
 import java.util.List;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,17 +9,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.datafoundry.evento.model.Event;
 import com.datafoundry.evento.model.User;
 import com.datafoundry.evento.service.UserService;
 
-@RestController
-@RequestMapping("/user")
+@RestController		//It is used to create Restful web services//
+@RequestMapping("/user")	//It is used to map web request or used to create base uri//
 @CrossOrigin(origins="http://localhost:4200")
 public class UserController {
 	
+	//Autowired is used for connection between two classes//
 	@Autowired
 	private UserService service;
 	
@@ -32,54 +31,33 @@ public class UserController {
 	    return service.findAll();
 	  }
 	
+	//post mapping is used to insert the new data//
 	@PostMapping("/saveuser")
-	public String saveUser(@RequestBody String first_name) {
-		service.save(first_name);
+	public String saveUser(@RequestBody User user) {
+		service.save(user);
 		return "User Saved Sucessfully........";
 		}
-
-//	@PostMapping("/saveuser")
-//	public String saveUser(@RequestBody User user) {
-//		service.save(user);
-//		return "User Saved Sucessfully........";
-//		}
 	
-	
+	//Get mapping is used to get the data//
 	@GetMapping("/getUser/{email}")
-	public User getUserbyEmail(@PathVariable String email){
+	public User getEmail(@PathVariable String email){
 		return service.findByEmail(email);
 	}
 
-	
-	@GetMapping("/getUserByAddress/{state}")
-	public List<User> getUserbyAddress(@PathVariable String state){
-		return service.findBystate(state);
-	}
-	
-	@GetMapping("/getUserByCity/{city}")
-	public List<User> getUserbyCity(@PathVariable String city){
-		return service.findBycity(city);
-	}
-//	@RequestMapping(value = "/", method = RequestMethod.POST)
-//	  public Event createEvent(@Valid @RequestBody Event event) {
-//	    service.save(event);
-//	    return event;
-//	  }
-	
-	@PostMapping("/login/{email}/{password}")
-	   public String getUserBylogin(@PathVariable String email,@PathVariable String password) {
+	//logic for login//
+	@PostMapping("/login")
+	@ResponseBody
+	public String getlogin(@RequestParam("email") String email,@RequestParam("password") String password) {
+		System.out.println(email+" "+password);
 		User user=service.findByEmail(email);
-
-	   if(user==null)
+		if(user==null)
 	   {
 		   return "Invalid Username or Password";    
 	   }
-	   
-	   else if(user.getEmail().equals(email) && user.getPassword().equals(password) ) {
+		else if(user.getEmail().equals(email) && user.getPassword().equals(password)) {
 			   return "login is successfull";
 		   }
-	   return "login";
-	
-	}	
+		 return "login";
+	}
 }
 

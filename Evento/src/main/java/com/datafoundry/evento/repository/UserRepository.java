@@ -1,26 +1,15 @@
 package com.datafoundry.evento.repository;
 
-import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import com.datafoundry.evento.model.User;
+
+//It annotates classes at the persistence layer(DAO), which will act as a database repository//
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
 	User findByEmail(String email);
 
-	@Query("{'address.state':?0}")
-	List<User> findBystate(String state);
-
-	@Query("{'address.city':?0}")
-	List<User> findBycity(String city);
-
-	User findByPassword(String password);
-
-	User save(String first_name);
-
-	
+	User save(String email);
 
 }
