@@ -25,21 +25,21 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	  public List<User> getAllUser()
 	  {
 	    return service.findAll();
 	  }
 	
 	//post mapping is used to insert the new data//
-	@PostMapping("/saveuser")
+	@PostMapping("/createUser")
 	public String saveUser(@RequestBody User user) {
 		service.save(user);
 		return "User Saved Sucessfully........";
 		}
 	
 	//Get mapping is used to get the data//
-	@GetMapping("/getUser/{email}")
+	@GetMapping("/getUserByEmail/{email}")
 	public User getEmail(@PathVariable String email){
 		return service.findByEmail(email);
 	}

@@ -2,6 +2,7 @@ package com.datafoundry.evento.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,8 +14,8 @@ import com.datafoundry.evento.model.EventRegistration;
 import com.datafoundry.evento.service.EventRegistrationService;
 
 @RestController	//It is used to create Restful web services//
-@RequestMapping("/api/EventRegistration")	//It is used to map web request or used to create base uri//
-	
+@RequestMapping("/eventRegistration")	//It is used to map web request or used to create base uri//
+@CrossOrigin(origins="http://localhost:4200")
 public class EventRegistrationController {
 
 	//Autowired is used for connection between two classes//
@@ -22,31 +23,31 @@ public class EventRegistrationController {
 	private EventRegistrationService service;
 	
 	  //post mapping is used to insert the new data//
-	@PostMapping("saveEventRegistration")
+	@PostMapping("/createEventRegistration")
 	public String saveEventRegistration(@RequestBody EventRegistration eventregistration) {
 	service.save(eventregistration);
 	return "saved successfully";
 	}
 	
 	//Get mapping is used to get the data//
-	@RequestMapping(value="/",method=RequestMethod.GET)
+	@RequestMapping(value="/getAll",method=RequestMethod.GET)
 	public List<EventRegistration> getAllEventRegistration(){
 		return service.findAll();
 	}
 	
 	//@pathvariable is used for data passed in the uri//
-	@GetMapping("/getEventRegistration/{id}")
+	@GetMapping("/getEventRegistrationById/{id}")
 	public EventRegistration getEventRegistrationbyId(@PathVariable String id) {
 		return service.findByid(id);
 	}
 	
 	//Get mapping is used to retrive the data//
-	@GetMapping("/getEventRegistrationbyuserid/{participant}")
+	@GetMapping("/getEventRegistrationByParticipantId/{participant}")
 	public List<EventRegistration> getEventRegistrationByUser(@PathVariable String participant) {
 		return service.findByUser(participant);
 	}
 	
-	@GetMapping("/getEventRegistrationbyuserid/{event}")
+	@GetMapping("/getEventRegistrationByEventId/{event}")
 	public List<EventRegistration> getEventRegistrationByEvent(@PathVariable String event) {
 		return service.findByEvent(event);
 	}
