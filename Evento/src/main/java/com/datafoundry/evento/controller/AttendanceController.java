@@ -34,16 +34,16 @@ public class AttendanceController
 	private EventRegistrationService eventRegistartionService;
 	
 	
-	@GetMapping("/getAttendanceByEventId")
-	public List<Event> getAllEvent()
+	@GetMapping("/getAttendanceByEventId/{id}")
+	 public Event getEventById(@PathVariable("id") String id)
 	  {
-	    return eventService.findAll();
+		return eventService.findByid(id);
 	  }
 	  
 	
-	@GetMapping("/getAttendanceByEventRegistrationId")
-	public List<EventRegistration> getAllEventRegistration(){
-		return eventRegistartionService.findAll();
+	@GetMapping("/getAttendanceByEventRegistrationId/{id}")
+	public EventRegistration getEventRegistrationbyId(@PathVariable String id) {
+		return eventRegistartionService.findByid(id);
 	}
 	
 	@PutMapping("/createAttendance/{id}")
