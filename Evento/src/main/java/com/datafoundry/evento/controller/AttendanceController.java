@@ -65,6 +65,12 @@ public class AttendanceController
 //	  {
 //		  return eventRegistrationService.findByTitle(title);
 //	  }	
+	
+	 @RequestMapping(value = "/getEventByTitle/{title}", method = RequestMethod.GET)
+	  public Event getEventByTitle(@PathVariable("title") String title) 
+	  {
+		return eventService.findBytitle(title);
+	  }
 	 	  
 }
 	
