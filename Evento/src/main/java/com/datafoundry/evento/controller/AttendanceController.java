@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.datafoundry.evento.model.Event;
@@ -31,8 +32,13 @@ public class AttendanceController
 	private EventService eventService;
 	
 	@Autowired
-	private EventRegistrationService eventRegistartionService;
+	private EventRegistrationService eventRegistrationService;
 	
+	//Get mapping is used to get the data//
+		@RequestMapping(value="/getAll",method=RequestMethod.GET)
+		public List<EventRegistration> getAllEventRegistration(){
+			return eventRegistrationService.findAll();
+		}
 	
 	@GetMapping("/getAttendanceByEventId/{id}")
 	 public Event getEventById(@PathVariable("id") String id)
@@ -43,16 +49,22 @@ public class AttendanceController
 	
 	@GetMapping("/getAttendanceByEventRegistrationId/{id}")
 	public EventRegistration getEventRegistrationbyId(@PathVariable String id) {
-		return eventRegistartionService.findByid(id);
+		return eventRegistrationService.findByid(id);
 	}
 	
 	@PutMapping("/createAttendance/{id}")
 	public void updateAttendance(@PathVariable("id") String id, @Valid @RequestBody EventRegistration eventRegistration) {
 		eventRegistration.setId(id);
-		eventRegistartionService.save(eventRegistration);
+		eventRegistrationService.save(eventRegistration);
 	//return " Attendace saved successfully";
 	}
 	
+	
+//	@GetMapping("/getAttendancetByEventTitle/{title}")
+//	  public List<EventRegistration> getAttendancebyEventTitle(@PathVariable String title)
+//	  {
+//		  return eventRegistrationService.findByTitle(title);
+//	  }	
 	 	  
 }
 	
