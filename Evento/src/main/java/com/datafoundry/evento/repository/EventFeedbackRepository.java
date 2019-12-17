@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.datafoundry.evento.model.EventFeedback;
 
-
+//It annotates classes at the persistence layer(DAO), which will act as a database repository//
 @Repository
 public interface EventFeedbackRepository extends MongoRepository<EventFeedback,String>{
 

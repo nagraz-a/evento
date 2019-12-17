@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.datafoundry.evento.model.EventFeedback;
 import com.datafoundry.evento.repository.EventFeedbackRepository;
 
+//In this business logic is present to perform crud operations//
+
 @Service
 public class EventFeedbackServiceImpl implements EventFeedbackService{
 
