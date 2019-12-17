@@ -1,5 +1,4 @@
 package com.datafoundry.evento.controller;
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -40,6 +39,15 @@ public class AttendanceController
 			return eventRegistrationService.findAll();
 		}
 	
+		
+		  
+		  @RequestMapping(value = "/event/getAll", method = RequestMethod.GET)
+		  public List<Event> getAllEvent()
+		  {
+		    return eventService.findAll();
+		  }
+		  
+		  
 	@GetMapping("/getAttendanceByEventId/{id}")
 	 public Event getEventById(@PathVariable("id") String id)
 	  {
