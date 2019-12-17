@@ -22,7 +22,7 @@ public class EventFeedbackController {
 	
 	//post mapping is used to insert the new data
 	@PostMapping("/createEventFeedback")
-	public String sav(@RequestBody EventFeedback feedback) {
+	public String save(@RequestBody EventFeedback feedback) {
 	service.save(feedback);
 	return "saved successfully";
 	}
