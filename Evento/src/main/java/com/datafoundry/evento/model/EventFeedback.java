@@ -4,10 +4,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//@Document to define a “collection name” where you save this object in mongodb//
+//In this case, when “eventRegistration” object saves, it will save into “eventRegistration” collection//
 @Document(collection="eventFeedback")
 public class EventFeedback {
 
-	@Id
+	@Id//Act as a primary Identifier
 	private String id;
 	private String event_feedback;
 	private Sessions sessions;
@@ -17,12 +19,12 @@ public class EventFeedback {
 	private String key_learned;
 	private String feedback_logistics;
 	private Logistics logistics;
-	@DBRef
+	@DBRef  //stores to a document, rather than embedding it directly in the parent document//
 	private Event event;
 	@DBRef
 	private User participants;
 	
-	
+	//create constructor to store the values in a particular variable//
 	public EventFeedback(String id, String event_feedback, Sessions sessions, String comments, String suggestions,
 			String helpfull, String key_learned, String feedback_logistics, Logistics logistics, Event event,
 			User participants) {
@@ -41,6 +43,10 @@ public class EventFeedback {
 	}
 
 
+	//create getter and setter method//
+			//getter() reads the value of the variable//
+			//setter() sets or update value for variable//
+			
 	public String getId() {
 		return id;
 	}
@@ -150,7 +156,7 @@ public class EventFeedback {
 		this.participants = participants;
 	}
 
-
+	//To String method is used to return the useful information//
 	@Override
 	public String toString() {
 		return "EventFeedback [id=" + id + ", event_feedback=" + event_feedback + ", sessions=" + sessions

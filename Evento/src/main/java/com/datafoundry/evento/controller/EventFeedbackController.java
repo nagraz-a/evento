@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.datafoundry.evento.model.EventFeedback;
 import com.datafoundry.evento.service.EventFeedbackService;
 
-@RestController
-@RequestMapping("/EventFeedback")
+@RestController //It is used to create Restful web services
+@RequestMapping("/EventFeedback") //It is used to map web request or used to create base uri
 public class EventFeedbackController {
-
+ 
+	//Autowired is used for connection between two classes//
 	@Autowired
 	private EventFeedbackService service;
 	
+	//post mapping is used to insert the new data
 	@PostMapping("/createEventFeedback")
 	public String sav(@RequestBody EventFeedback feedback) {
 	service.save(feedback);
@@ -30,11 +32,13 @@ public class EventFeedbackController {
 		return service.findAll();
 	}
 	
+	//Get mapping is used to get the data
 	@GetMapping("/getEventFeedbackById/{id}")
 	public EventFeedback getEventFeedbackbyId(@PathVariable String id) {
 		return service.findByid(id);
 	}
 	
+	 //@pathvariable is used for data passed in the uri
 	@GetMapping("/getEventfeedbackByParticipantId/{participants}")
 	public List<EventFeedback> getEventFeedbackByUser(@PathVariable String participants) {
 		return service.findByUser(participants);

@@ -6,6 +6,7 @@ import com.datafoundry.evento.model.EventFeedback;
 
 public interface EventFeedbackService {
 
+	//abstract methods //
 	EventFeedback save(EventFeedback feedback);
 
 	List<EventFeedback> findAll();
