@@ -19,4 +19,6 @@ public interface EventService {
 	List<Event> findByCity(String city);
 
 	Event save(@Valid Event event);
+
+	List<Event> findByUserEmail(String email);
 }

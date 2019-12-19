@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-// @Document to define a “collection name” when you save this object in mongodb.
+// @Document to define a “collection name” when you save this object in mongodb
 //In this case, when “event” object saves, it will save into “event” collection
 
 @Document(collection="event")

@@ -45,4 +45,10 @@ public class EventServiceImpl implements EventService {
 	public Event save(@Valid Event event) {
 		return repository.save(event);
 	}
+
+	@Override
+	public List<Event> findByUserEmail(String email) {
+	
+		return repository.findByUserEmail(email);
+	}
 }

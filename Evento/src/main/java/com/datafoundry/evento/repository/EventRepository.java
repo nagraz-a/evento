@@ -24,4 +24,8 @@ public interface EventRepository extends MongoRepository<Event, String> {
 	Event findBytitle(String title);
 
 
+	@Query("{'owner.title':?0}")
+	List<Event> findByUserEmail(String email);
+
+
 }
